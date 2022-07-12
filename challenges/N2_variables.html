@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+    <title>🏆 Challenge #N2 · Variables</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+<link rel="stylesheet" href="../assets/css/all.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    moment.locale('fr');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/fr.min.js"
+    integrity="sha512-RAt2+PIRwJiyjWpzvvhKAG2LEdPpQhTgWfbEkFDCo8wC4rFYh5GQzJBVIFDswwaEDEYX16GEE/4fpeDNr7OIZw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="icon" href="https://javascript.melvin-lemoine.me/assets/images/favicon.png">
+    <link rel="stylesheet" href="../assets/css/ploume.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+</head>
+
+<body class="body challenge variables">
+
+    <header class="header">
+
+    <audio id="sound__done" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/done.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__notdone" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/notdone.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__blocked" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/blocked.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__incomplete" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/incomplete.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__inprogress" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/inprogress.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1 class="header__title flex-r h-centered w-full is-5-xs">
+            🏆 Challenge #N2&nbsp;·&nbsp;<b>Variables</b>
+            <span class="flex-c ml-auto">
+                <span class="header__title_file is-7-">HTML · challenges/N2_variables.html</span>
+                <span class="header__title_file ml-auto is-7-">JS · challenges/js/N2_variables.js</span>
+            </span>
+        </h1>
+        </span></h1>
+        <hr class="header__separator mv-1" />
+        <div class="header__controls flex-r h-centered space-between">
+            <div class="header__controls_buttons">
+
+                <a class="button is-info is-bordered is-small" href="../index.html">
+                    <span class="icon">
+                        <i class="fas fa-th-list"></i>
+                    </span>
+                    Liste des challenges
+                </a>
+
+                
+
+                
+
+            </div>
+
+            <div id="status" class="header__controls_select flex-r">
+
+                <p class="header__controls_select_label">
+                    <span id="status-icon" class="header__controls_select_label_icon fas"></span>
+                    <span id="status-label">À faire</span>
+                </p>
+
+                <span class="header__controls_select_icon">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+
+                <ul id="status-list" class="header__controls_select_list">
+                    <li id="status-todo"
+                        class="header__controls_select_list_status header__controls_select_list_status--todo"
+                        onclick="setStatus('todo')">
+                        <i class="header__controls_select_list_status_icon fas fa-hourglass-start"></i>
+                        <span class="header__controls_select_list_status_label">À faire</span>
+                    </li>
+                    <li id="status-done"
+                        class="header__controls_select_list_status header__controls_select_list_status--done"
+                        onclick="setStatus('done')">
+                        <i class="header__controls_select_list_status_icon fas fa-check"></i>
+                        <span class="header__controls_select_list_status_label">Terminé</span>
+                    </li>
+                    <li id="status-inprogress"
+                        class="header__controls_select_list_status header__controls_select_list_status--inprogress"
+                        onclick="setStatus('inprogress')">
+                        <i class="header__controls_select_list_status_icon fas fa-sync-alt"></i>
+                        <span class="header__controls_select_list_status_label">En cours</span>
+                    </li>
+                    <li id="status-incomplete"
+                        class="header__controls_select_list_status header__controls_select_list_status--incomplete"
+                        onclick="setStatus('incomplete')">
+                        <i class="header__controls_select_list_status_icon fas fa-spinner"></i>
+                        <span class="header__controls_select_list_status_label">Incomplet</span>
+                    </li>
+                    <li id="status-blocked"
+                        class="header__controls_select_list_status header__controls_select_list_status--blocked"
+                        onclick="setStatus('blocked')">
+                        <i class="header__controls_select_list_status_icon fas fa-times-circle"></i>
+                        <span class="header__controls_select_list_status_label">Blocage</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let page_number = "N2";
+    </script>
+
+    <script src="../assets/js/challenge.js">
+
+    </script>
+</header>
+
+    <main class="main">
+        <div class="container">
+
+    <div class="MemoBox">
+
+        <p class="MemoBox__title">Mémo</p>
+
+        <p class="MemoBox__line">
+            Déclarer une variable <span class="code"><span class="special">let</span> goyave;</span>
+        </p>
+
+        <p class="MemoBox__line">
+            Déclarer une variable avec une valeur <span class="code"><span class="special">let</span> goyave <span
+                    class="special">=</span> <span class="integer">5</span>;</span>
+        </p>
+
+        <p class="MemoBox__line">
+            Redéfinir la valeur d'une variable <span class="code">goyave <span class="special">=</span> <span
+                    class="integer">25</span>;</span>
+        </p>
+
+        <p class="MemoBox__line">
+            Afficher une variable dans la console <span class="code">console.<span
+                    class="function">log</span>(maVariable);</span>
+        </p>
+    </div>
+
+    <section class="section">
+        <h2 class="section__title nomb">Déclarer et manipuler des variables</h2>
+        <p class="section__subtitle">
+            Déclarez 2 variables, puis redéfinissez-les.
+        </p>
+
+        <p class="bonus flex-r">
+  <span class="bonus__icon mr-2 content-centered br-normal">
+    <i class="fas fa-star"></i>
+  </span>
+
+  <span class="bonus__content flex-r h-centered">
+
+        Les variables doivent être affichées dans la console après avoir été déclarées et après avoir été redéfinies.
+        </span>
+</p>
+
+        <p class="bonus flex-r">
+  <span class="bonus__icon mr-2 content-centered br-normal">
+    <i class="fas fa-star"></i>
+  </span>
+
+  <span class="bonus__content flex-r h-centered">
+
+        Déclarez une variable avec chaque type de valeur possible.
+        </span>
+</p>
+
+    </section>
+
+    <section class="section demo">
+        <h2 class="section__title nomb">Résultat attendu</h2>
+
+        <div class="section__content">
+            <img class="w-full br-normal"
+                src="https://javascript.melvin-lemoine.me/assets/images/challenges/N2_variables/resultat.png"
+                alt="Résultat attendu" />
+        </div>
+    </section>
+
+</div>
+    </main>
+
+    <script src="js/N2_variables.js"></script>
+    
+
+
+
+<footer class="footer">
+
+    <div class="container flex-r space-between h-centered">
+
+        <div class="left flex-c">
+            <p class="is-6">
+                Support de formation pensé et développé avec 💖 par
+                <a class="bold" href="https://melvin-lemoine.me" target="_blank">Melvin
+                    Lemoine</a>.
+            </p>
+            <p class="total is-7"><span class="bold">25</span> étudiant·e·s ont déjà utilisé ce support.</p>
+        </div>
+
+        <div class="right flex-c v-end">
+            <p class="is-6">🔁 Dernière mise à jour
+                <span class="bold" id="moment-footer"></span>
+            </p>
+            <p class="is-7">Version <span class="bold">1.6.2</span></p>
+
+            <script>
+                document.getElementById('moment-footer').innerHTML = moment("04.07.2022 16:25", "DD.MM.YYYY hh:mm").fromNow();
+            </script>
+        </div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>

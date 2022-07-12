@@ -1,0 +1,1 @@
+console.log("Fichier L5_fullpage.js importé ✅");

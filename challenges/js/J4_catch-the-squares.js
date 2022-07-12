@@ -1,0 +1,1 @@
+console.log("Fichier J4_catch-the-squares.js importé ✅");

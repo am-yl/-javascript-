@@ -1,0 +1,1 @@
+console.log("Fichier J3_cookie-clicker.js importé ✅");

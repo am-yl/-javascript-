@@ -1,0 +1,1 @@
+console.log("Fichier P6_time.js importé ✅");

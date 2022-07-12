@@ -1,0 +1,1 @@
+console.log("Fichier N17_interval-delai.js importé ✅");

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+    <title>🏆 Challenge #N14 · Vidéo & audio</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+<link rel="stylesheet" href="../assets/css/all.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    moment.locale('fr');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/fr.min.js"
+    integrity="sha512-RAt2+PIRwJiyjWpzvvhKAG2LEdPpQhTgWfbEkFDCo8wC4rFYh5GQzJBVIFDswwaEDEYX16GEE/4fpeDNr7OIZw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="icon" href="https://javascript.melvin-lemoine.me/assets/images/favicon.png">
+    <link rel="stylesheet" href="../assets/css/ploume.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+</head>
+
+<body class="body challenge video-audio">
+
+    <header class="header">
+
+    <audio id="sound__done" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/done.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__notdone" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/notdone.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__blocked" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/blocked.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__incomplete" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/incomplete.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sound__inprogress" style="display: none">
+        <source src="https://javascript.melvin-lemoine.me/assets/audio/inprogress.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1 class="header__title flex-r h-centered w-full is-5-xs">
+            🏆 Challenge #N14&nbsp;·&nbsp;<b>Vidéo & audio</b>
+            <span class="flex-c ml-auto">
+                <span class="header__title_file is-7-">HTML · challenges/N14_video-audio.html</span>
+                <span class="header__title_file ml-auto is-7-">JS · challenges/js/N14_video-audio.js</span>
+            </span>
+        </h1>
+        </span></h1>
+        <hr class="header__separator mv-1" />
+        <div class="header__controls flex-r h-centered space-between">
+            <div class="header__controls_buttons">
+
+                <a class="button is-info is-bordered is-small" href="../index.html">
+                    <span class="icon">
+                        <i class="fas fa-th-list"></i>
+                    </span>
+                    Liste des challenges
+                </a>
+
+
+
+
+
+            </div>
+
+            <div id="status" class="header__controls_select flex-r">
+
+                <p class="header__controls_select_label">
+                    <span id="status-icon" class="header__controls_select_label_icon fas"></span>
+                    <span id="status-label">À faire</span>
+                </p>
+
+                <span class="header__controls_select_icon">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+
+                <ul id="status-list" class="header__controls_select_list">
+                    <li id="status-todo"
+                        class="header__controls_select_list_status header__controls_select_list_status--todo"
+                        onclick="setStatus('todo')">
+                        <i class="header__controls_select_list_status_icon fas fa-hourglass-start"></i>
+                        <span class="header__controls_select_list_status_label">À faire</span>
+                    </li>
+                    <li id="status-done"
+                        class="header__controls_select_list_status header__controls_select_list_status--done"
+                        onclick="setStatus('done')">
+                        <i class="header__controls_select_list_status_icon fas fa-check"></i>
+                        <span class="header__controls_select_list_status_label">Terminé</span>
+                    </li>
+                    <li id="status-inprogress"
+                        class="header__controls_select_list_status header__controls_select_list_status--inprogress"
+                        onclick="setStatus('inprogress')">
+                        <i class="header__controls_select_list_status_icon fas fa-sync-alt"></i>
+                        <span class="header__controls_select_list_status_label">En cours</span>
+                    </li>
+                    <li id="status-incomplete"
+                        class="header__controls_select_list_status header__controls_select_list_status--incomplete"
+                        onclick="setStatus('incomplete')">
+                        <i class="header__controls_select_list_status_icon fas fa-spinner"></i>
+                        <span class="header__controls_select_list_status_label">Incomplet</span>
+                    </li>
+                    <li id="status-blocked"
+                        class="header__controls_select_list_status header__controls_select_list_status--blocked"
+                        onclick="setStatus('blocked')">
+                        <i class="header__controls_select_list_status_icon fas fa-times-circle"></i>
+                        <span class="header__controls_select_list_status_label">Blocage</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let page_number = "N14";
+    </script>
+
+    <script src="../assets/js/challenge.js">
+
+    </script>
+</header>
+
+    <main class="main">
+        <div class="container">
+
+    <div class="MemoBox">
+
+        <p class="MemoBox__title">Mémo</p>
+        <p class="MemoBox__line">Lancer la lecture d'un média <span class="code">document.<span
+                    class="function">getElementById</span>(<span class="string">"theVideo"</span>).<span
+                    class="function">play</span>();</span>
+        </p>
+        <p class="MemoBox__line">Mettre en pause un média <span class="code">document.<span
+                    class="function">getElementById</span>(<span class="string">"theAudio"</span>).<span
+                    class="function">pause</span>();</span>
+        </p>
+
+        <p class="MemoBox__line">Récupérer le volume d'un élément audio<span class="code">document.<span
+                    class="function">getElementById</span>(<span class="string">"theAudio"</span>).<span
+                    class="function">volume</span>;</span>
+        </p>
+
+        <p class="MemoBox__line">Définir le volume d'un élément audio<span class="code">document.<span
+                    class="function">getElementById</span>(<span class="string">"theAudio"</span>).<span
+                    class="function">volume</span> = 0.5;</span>
+        </p>
+
+    </div>
+
+    <!-- SECTION 1 -->
+
+    <section class="section">
+
+        <h2 class="section__title">Hover & vidéo</h2>
+        <p class="section__subtitle">La vidéo doit pouvoir être controlée grâce aux boutons de contrôle situés en
+            dessous de celle-ci.</p>
+
+        <p class="bonus flex-r">
+  <span class="bonus__icon mr-2 content-centered br-normal">
+    <i class="fas fa-star"></i>
+  </span>
+
+  <span class="bonus__content flex-r h-centered">
+
+        Quand la souris entre sur la vidéo cela doit la lancer, et quand elle sort la mettre en pause.
+        </span>
+</p>
+
+        <p class="bonus flex-r">
+  <span class="bonus__icon mr-2 content-centered br-normal">
+    <i class="fas fa-star"></i>
+  </span>
+
+  <span class="bonus__content flex-r h-centered">
+
+        Créer un seul bouton qui fait le play et le pause.
+        </span>
+</p>
+
+        <div class="section__content mt-3">
+            <video id="vid1" class="video">
+                <source src="https://javascript.melvin-lemoine.me/assets/vid/Ylvis - The Fox (What Does The Fox Say) [Official music video HD].mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+
+        <div class="controls mt-1-xs flex-r h-centered">
+            <button id="playpauseButton1" class="button has-icon mr-1">
+                <span class="icon">
+                    <i id="iconChange" class="fas fa-play"></i>
+                </span>
+                <span id="iconName">Play</span>
+            </button>
+
+            <!-- <button id="playButton1" class="button has-icon mr-1">
+                <span class="icon">
+                    <i class="fas fa-play"></i>
+                </span>
+                Play
+            </button>
+
+            <button id="pauseButton1" class="button has-icon mr-1">
+                <span class="icon">
+                    <i class="fas fa-pause"></i>
+                </span>
+                Pause
+            </button> -->
+
+            <button id="muteButton1" class="button has-icon mr-1">
+                <span class="icon">
+                    <i class="fas fa-volume-mute"></i>
+                </span>
+                Couper le son
+            </button>
+
+            <button id="upButton1" class="button has-icon mr-1">
+                <span class="icon">
+                    <i class="fas fa-volume-up"></i>
+                </span>
+                Activer le son
+            </button>
+
+            <button id="enableButton" class="button has-icon mr-1" disabled>
+                <span class="icon">
+                    <i class="fas fa-hand-pointer"></i>
+                </span>
+                Activer les contrôles
+            </button>
+
+            <button id="disableButton" class="button has-icon">
+                <span class="icon">
+                    <i class="fas fa-hand-pointer"></i>
+                </span>
+                Désactiver les contrôles
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+        <h2 class="section__title">Audio</h2>
+        <p class="section__subtitle">Faire fonctionner les contrôles sous l'élément audio.</p>
+
+        <p class="bonus flex-r">
+  <span class="bonus__icon mr-2 content-centered br-normal">
+    <i class="fas fa-star"></i>
+  </span>
+
+  <span class="bonus__content flex-r h-centered">
+
+        Créer un seul bouton qui fait le play et le pause.
+        </span>
+</p>
+
+        <div class="section__content mt-3">
+            <audio id="audio2" controls>
+                <source src="https://javascript.melvin-lemoine.me/assets/audio/Where Them Girls At.mp3" type="audio/mp3">
+            </audio>
+
+            <div class="mt-1-xs flex-r">
+                <button id="playpauseButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i id="iconChange2" class="fas fa-play"></i>
+                    </span>
+                    <span id="iconName2">Play</span>
+                </button>
+
+                <!-- <button id="playButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i class="fas fa-play"></i>
+                    </span>
+                    Play
+                </button>
+
+                <button id="pauseButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i class="fas fa-pause"></i>
+                    </span>
+                    Pause
+                </button> -->
+
+                <button id="muteButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i class="fas fa-volume-off"></i>
+                    </span>
+                    volume à 0%
+                </button>
+
+                <button id="midButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i class="fas fa-volume-down"></i>
+                    </span>
+                    volume à 50%
+                </button>
+
+                <button id="upButton2" class="button has-icon mr-1">
+                    <span class="icon">
+                        <i class="fas fa-volume-up"></i>
+                    </span>
+                    volume à 100%
+                </button>
+
+                <button id="volumeButton2" class="button has-icon">
+                    <span class="icon">
+                        <i class="fas fa-headphones"></i>
+                    </span>
+                    Afficher le niveau du volume
+                </button>
+                <p id="volume"></p>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+    </main>
+
+    <script src="js/N14_video-audio.js"></script>
+
+
+
+
+<footer class="footer">
+
+    <div class="container flex-r space-between h-centered">
+
+        <div class="left flex-c">
+            <p class="is-6">
+                Support de formation pensé et développé avec 💖 par
+                <a class="bold" href="https://melvin-lemoine.me" target="_blank">Melvin
+                    Lemoine</a>.
+            </p>
+            <p class="total is-7"><span class="bold">25</span> étudiant·e·s ont déjà utilisé ce support.</p>
+        </div>
+
+        <div class="right flex-c v-end">
+            <p class="is-6">🔁 Dernière mise à jour
+                <span class="bold" id="moment-footer"></span>
+            </p>
+            <p class="is-7">Version <span class="bold">1.6.2</span></p>
+
+            <script>
+                document.getElementById('moment-footer').innerHTML = moment("04.07.2022 16:25", "DD.MM.YYYY hh:mm").fromNow();
+            </script>
+        </div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>
