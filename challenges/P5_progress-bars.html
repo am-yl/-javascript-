@@ -179,14 +179,15 @@
     <div class="section__content">
       <div class="controls flex-r">
         <div class="inputs flex-c">
-          <input id="finishedEle" class="input mb-1" placeholder="Nombre d'éléments complétés" />
-          <input id="numberEle" class="input" placeholder="Nombre d'éléments total" />
+          <input type="number" id="finishedEle" class="input mb-1" placeholder="Nombre d'éléments complétés" />
+          <input type="number" id="numberEle" class="input" placeholder="Nombre d'éléments total" />
         </div>
 
-        <button class="button ml-1 is-success is-small">
-          Actualiser la barre de progression
+        <button id="btnProgress" class="button ml-1 is-success is-small" disabled>
+            Actualiser la barre de progression
         </button>
-      </div>
+    </div>
+    <p id="alert"></p>
 
       <div class="progressbar mt-3">
         <span id="progressValue" class="progressbar__value">0%</span>
